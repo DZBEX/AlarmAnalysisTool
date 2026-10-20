@@ -1,0 +1,71 @@
+<Window
+    x:Class="AlarmAnalysisTool.Views.ProgressDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="处理中"
+    Width="420"
+    Height="200"
+    AllowsTransparency="True"
+    Background="Transparent"
+    ResizeMode="NoResize"
+    ShowInTaskbar="False"
+    WindowStartupLocation="CenterOwner"
+    WindowStyle="None">
+    <Border
+        Margin="10"
+        Background="White"
+        CornerRadius="10">
+        <Border.Effect>
+            <DropShadowEffect
+                BlurRadius="20"
+                Opacity="0.25"
+                ShadowDepth="2"
+                Color="#333" />
+        </Border.Effect>
+        <Grid Margin="30,25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!--  标题行：图标 + 标题  -->
+            <StackPanel
+                Grid.Row="0"
+                Margin="0,0,0,15"
+                Orientation="Horizontal">
+                <TextBlock
+                    Margin="0,0,10,0"
+                    VerticalAlignment="Center"
+                    FontSize="24"
+                    Text="⏳" />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontFamily="Microsoft YaHei UI"
+                    FontSize="16"
+                    FontWeight="Bold"
+                    Foreground="#333"
+                    Text="请稍候" />
+            </StackPanel>
+
+            <!--  状态消息  -->
+            <TextBlock
+                x:Name="MessageText"
+                Grid.Row="1"
+                Margin="0,0,0,15"
+                FontFamily="Microsoft YaHei UI"
+                FontSize="13"
+                Foreground="#555"
+                Text="{Binding Message, RelativeSource={RelativeSource AncestorType=Window}}"
+                TextWrapping="Wrap" />
+
+            <!--  不确定进度条  -->
+            <ProgressBar
+                Grid.Row="2"
+                VerticalAlignment="Top"
+                Height="6"
+                IsIndeterminate="True"
+               Foreground="#4472C4" />
+        </Grid>
+    </Border>
+</Window>

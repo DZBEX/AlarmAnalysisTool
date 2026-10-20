@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>zoom-in.ico</ApplicationIcon>
+
+    <!-- 打包相关: 程序集信息 -->
+    <AssemblyTitle>报警日志智能分析工具</AssemblyTitle>
+    <Company>信宇人</Company>
+    <Product>AlarmAnalysisTool</Product>
+    <Version>1.0.0.0</Version>
+    <FileVersion>1.0.0.0</FileVersion>
+
+    <!-- 打包时排除调试符号, 减小体积 -->
+    <DebugType>embedded</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="zoom-in.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.104.2" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.32" />
+    <!-- Microsoft.Data.Sqlite 8.0.x 的依赖下限仍是 2.1.6；显式锁定已修复安全公告的版本。 -->
+    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.14" />
+    <PackageReference Include="OxyPlot.Core" Version="2.2.0" />
+    <PackageReference Include="OxyPlot.SkiaSharp" Version="2.2.0" />
+    <PackageReference Include="OxyPlot.Wpf" Version="2.2.0" />
+    <PackageReference Include="QuestPDF" Version="2024.12.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
+  </ItemGroup>
+
+  <!-- 打包: 不裁剪 (QuestPDF/ClosedXML 用反射, 裁剪会出问题) -->
+  <PropertyGroup Condition="'$(PublishSingleFile)' == 'true'">
+    <TrimMode>partial</TrimMode>
+    <TrimmerRemoveSymbols>true</TrimmerRemoveSymbols>
+  </PropertyGroup>
+
+</Project>
