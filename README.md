@@ -1,7 +1,6 @@
 # 报警日志智能分析工具（AlarmAnalysisTool）
 
 面向威纶通（Weinview）HMI 报警日志的 Windows 桌面分析工具，用于把 CSV、Excel 和 SQLite 日志转换成统一的分析数据，完成报警频次、趋势、持续时间、设备来源、关联关系和异常模式分析，并导出 Excel、CSV、PDF 或 Word 报告。
-![Uploading 企业微信截图_17837338212720.png…]()
 
 | 项目 | 说明 |
 | --- | --- |
